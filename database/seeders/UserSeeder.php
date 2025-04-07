@@ -26,35 +26,33 @@ class UserSeeder extends Seeder
         ]);
 
         City::create([
-            'name' => 'jakarta',
-            'slug' => 'jakarta',
+            'name' => 'cirebon',
+            'slug' => 'cirebon',
             'image' => 'https://raw.githubusercontent.com/BillyJonathan29/assets-icf/main/py.png'
         ]);
         City::create([
-            'name' => 'jakarta',
-            'slug' => 'jakarta',
+            'name' => 'surabaya',
+            'slug' => 'surabaya',
             'image' => 'https://raw.githubusercontent.com/BillyJonathan29/assets-icf/main/js.png'
         ]);
 
 
         Category::create([
-            'name' => 'jakarta',
-            'slug' => 'jakarta',
+            'name' => 'indramayu',
+            'slug' => 'indramayu',
             'image' => 'https://raw.githubusercontent.com/BillyJonathan29/assets-icf/main/head-meja.png'
         ]);
 
         Category::create([
-            'name' => 'jakarta',
-            'slug' => 'jakarta',
+            'name' => 'majalengka',
+            'slug' => 'majalengka',
             'image' => 'https://raw.githubusercontent.com/BillyJonathan29/assets-icf/main/head-learning.png'
         ]);
 
         Category::create([
-            'name' => 'jakarta',
-            'slug' => 'jakarta',
+            'name' => 'bandung',
+            'slug' => 'bandung',
             'image' => 'https://raw.githubusercontent.com/BillyJonathan29/assets-icf/main/css.png'
         ]);
-
-
     }
 }
