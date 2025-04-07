@@ -11,6 +11,7 @@ class Transaction extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
+        'code',
         'boarding_house_id',
         'room_id',
         'name',

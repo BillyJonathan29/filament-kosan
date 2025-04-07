@@ -24,7 +24,7 @@ return new class extends Migration
             $table->date('start_date');
             $table->integer('duration');
             $table->integer('total_amount')->nullable();
-            $table->integer('transaction_date')->nullable();
+            $table->date('transaction_date')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
