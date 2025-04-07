@@ -49,4 +49,11 @@ class BoardingHouse extends Model
     {
         return $this->hasMany(Transaction::class);
     }
+
+    // protected static function booted()
+    // {
+    //     static::deleting(function ($boardingHouse) {
+    //         $boardingHouse->bonuses()->delete();
+    //     });
+    // }
 }

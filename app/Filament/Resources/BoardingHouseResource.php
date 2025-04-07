@@ -64,11 +64,55 @@ class BoardingHouseResource extends Resource
                                     ->required()
                             ]),
 
-                        Forms\Components\Tabs\Tab::make('')
-                            ->schema([]),
+                        Forms\Components\Tabs\Tab::make('Bonus Ngekos')
+                            ->schema([
+                                Forms\Components\Repeater::make('bonuses')
+                                    ->relationship('bonuses')
+                                    ->schema([
+                                        Forms\Components\FileUpload::make('image')
+                                            ->image()
+                                            ->required()
+                                            ->directory('boarding_houses/bonuses'),
+                                        Forms\Components\TextInput::make('name')
+                                            ->required(),
 
-                        Forms\Components\Tabs\Tab::make('')
-                            ->schema([])
+                                        Forms\Components\Textarea::make('description')
+                                            ->required(),
+                                    ])
+                            ]),
+
+                        Forms\Components\Tabs\Tab::make('Kamar')
+                            ->schema([
+                                Forms\Components\Repeater::make('rooms')
+                                    ->relationship('rooms')
+                                    ->schema([
+                                        Forms\Components\TextInput::make('name')
+                                            ->required(),
+                                        Forms\Components\TextInput::make('room_type')
+                                            ->required(),
+                                        Forms\Components\TextInput::make('square_feet')
+                                            ->required()
+                                            ->numeric(),
+                                        Forms\Components\TextInput::make('capacity')
+                                            ->required()
+                                            ->numeric(),
+                                        Forms\Components\TextInput::make('price_per_month')
+                                            ->required()
+                                            ->prefix('IDR')
+                                            ->numeric(),
+                                        Forms\Components\Toggle::make('is_available')
+                                            ->required(),
+
+                                        Forms\Components\Repeater::make('images')
+                                            ->relationship('images')
+                                            ->schema([
+                                                Forms\Components\FileUpload::make('image')
+                                                    ->image()
+                                                    ->required()
+                                                    ->directory('boarding_houses/rooms'),
+                                            ]),
+                                    ])
+                            ]),
                     ])
                     ->columnSpan(2)
             ]);
@@ -78,19 +122,12 @@ class BoardingHouseResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\ImageColumn::make('thumbnail'),
-                Tables\Columns\TextColumn::make('name')
-                    ->searchable()
-                    ->toggleable()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('slug'),
+                Tables\Columns\TextColumn::make('name'),
                 Tables\Columns\TextColumn::make('city.name'),
                 Tables\Columns\TextColumn::make('category.name'),
-                Tables\Columns\TextColumn::make('description')
-                ->limit(50),
-                Tables\Columns\TextColumn::make('price')
-                    ->money('IDR'),
-                Tables\Columns\TextColumn::make('address')
+                Tables\Columns\TextColumn::make('price'),
+                Tables\Columns\ImageColumn::make('thumbnail')
+
             ])
             ->filters([
                 //
