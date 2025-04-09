@@ -32,6 +32,8 @@ class BoardingHouseRepository implements BoardingHouseRepositoryInterface
                 $query->where('slug', $category);
             });
         }
+
+        return $query->get();
     }
 
     public function getPopularBoardingHouses($limit = 5)
