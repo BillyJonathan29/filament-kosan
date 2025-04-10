@@ -6,16 +6,16 @@
     </div>
     <div class="relative flex flex-col gap-[30px] my-[60px] px-5">
         <h1 class="font-bold text-[30px] leading-[45px] text-center">Explore Our<br>Beautiful Koskos</h1>
-        <form action="search-result.html" class="flex flex-col rounded-[30px] border border-[#F1F2F6] p-5 gap-6 bg-white">
+        <form action="{{ route('find-kos.results') }}" class="flex flex-col rounded-[30px] border border-[#F1F2F6] p-5 gap-6 bg-white">
             <div id="InputContainer" class="flex flex-col gap-[18px]">
                 <div class="flex flex-col w-full gap-2">
                     <p class="font-semibold">Name</p>
                     <label
                         class="flex items-center w-full rounded-full p-[14px_20px] gap-3 bg-white ring-1 ring-[#F1F2F6] focus-within:ring-[#91BF77] transition-all duration-300">
                         <img src="assets/images/icons/note-favorite-grey.svg" class="w-5 h-5 flex shrink-0" alt="icon">
-                        <input type="text" name="" id=""
+                        <input type="text" name="search" id=""
                             class="appearance-none outline-none w-full font-semibold placeholder:text-ngekos-grey placeholder:font-normal"
-                            placeholder="Type the koskos name">
+                            placeholder="Type the koskos name" value="{{ request('search') }}">
                     </label>
                 </div>
                 <div class="flex flex-col w-full gap-2">
@@ -40,7 +40,7 @@
                         class="relative flex items-center w-full rounded-full p-[14px_20px] gap-2 bg-white ring-1 ring-[#F1F2F6] focus-within:ring-[#91BF77] transition-all duration-300">
                         <img src="assets/images/icons/location.svg"
                             class="absolute w-5 h-5 flex shrink-0 transform -translate-y-1/2 top-1/2 left-5" alt="icon">
-                        <select name="" id="" class="appearance-none outline-none w-full bg-white pl-8">
+                        <select name="category" id="" class="appearance-none outline-none w-full bg-white pl-8">
                             <option value="" hidden>Select category</option>
                             @foreach ($categories as $category)
                                 <option value="{{ $category->slug }}">{{ $category->name }}</option>
