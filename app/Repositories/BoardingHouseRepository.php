@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Interfaces\BoardingHouseRepositoryInterface;
 use App\Models\BoardingHouse;
+use App\Models\Room;
 use Illuminate\Database\Eloquent\Builder;
 
 
@@ -52,15 +53,6 @@ class BoardingHouseRepository implements BoardingHouseRepositoryInterface
         })->get();
     }
 
-/*************  ✨ Windsurf Command ⭐  *************/
-    /**
-     * Retrieve a collection of boarding houses that belong to a specific category identified by its slug.
-     *
-     * @param string $slug The slug of the category to filter boarding houses by.
-     * @return \Illuminate\Database\Eloquent\Collection A collection of boarding houses belonging to the specified category.
-     */
-
-/*******  1e33c2d1-dd06-49d8-96f2-0b31f487910c  *******/
     public function getBoardingHouseByCategorySlug($slug)
     {
         return BoardingHouse::whereHas('category', function(Builder $query) use ($slug) {
@@ -71,5 +63,10 @@ class BoardingHouseRepository implements BoardingHouseRepositoryInterface
     public function getBoardingHouseBySlug($slug)
     {
         return BoardingHouse::where('slug', $slug)->first();
+    }
+
+    public function getBoardingHouseRoomById($id)
+    {
+        return Room::find($id);
     }
 }
